@@ -1,3 +1,7 @@
+# https://school.programmers.co.kr/learn/courses/30/lessons/42579
+# 베스트앨범
+
+
 def solution(genres, plays):
   played_time = {}
   for i in zip(genres, plays):
