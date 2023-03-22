@@ -1,4 +1,4 @@
-from Stack_Queue.find_incorrect_bracket import solution
+from Stack_Queue.print_priority_paper import solution
 
 print(
-    solution("(()("))
+    solution([1, 1, 9, 1, 1, 1], 0))
