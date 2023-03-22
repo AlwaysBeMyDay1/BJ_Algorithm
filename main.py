@@ -1,5 +1,4 @@
-from Hash.marathon import solution
+from Stack_Queue.find_incorrect_bracket import solution
 
 print(
-    solution(["mislav", "stanko", "mislav", "mislav", "mislav", "ana"],
-             ["stanko", "ana", "mislav", "mislav", "mislav"]))
+    solution("(()("))
