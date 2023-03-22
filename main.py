@@ -1,4 +1,4 @@
-from Stack_Queue.calc_stock_price import solution
+from Heap.make_spicy import solution
 
 print(
-    solution([1, 2, 3, 3, 2, 2, 2, 2, 3, 1]))
+    solution([1, 2, 3, 9, 10, 12], 7))
