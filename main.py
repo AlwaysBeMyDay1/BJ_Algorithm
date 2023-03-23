@@ -1,4 +1,3 @@
-from Heap.make_spicy import solution
+from Others.fibonacci import solution
 
-print(
-    solution([1, 2, 3], 11))
+print(solution(5))
