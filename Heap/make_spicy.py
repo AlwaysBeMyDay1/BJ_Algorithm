@@ -3,9 +3,51 @@
 
 # sol.3
 # use heapq
-def solution3(scoville_list, K):
-    scoville = deque(scoville_list)
+import heapq
 
+def solution3(scoville, K):
+    heapq.heapify(scoville)
+    answer = 0
+
+    if scoville[0] >= K:
+        return answer
+        
+    while len(scoville) != 1:
+        answer += 1
+        
+        min1 = heapq.heappop(scoville)
+        min2 = heapq.heappop(scoville)
+        made_scoville = min1 + (min2 * 2)
+        heapq.heappush(scoville, made_scoville)
+        
+        if scoville[0] >= K:
+            return answer
+        else:
+            pass
+    return -1
+    
+# sol.2-1
+# 80.8(정확성), 0(효율성)
+from collections import deque
+
+def solution(scoville_list, K):
+    scoville = deque(scoville_list)
+    answer = 0
+    
+    while len(scoville) != 1:
+        scoville = deque(sorted(scoville))
+        min1 = scoville.popleft()
+        if min1 >= K:
+            break
+        if len(scoville) < 2:
+            return -1
+        min2 = scoville.popleft()
+        made_scoville = min1 + (min2 * 2)
+        scoville.append(made_scoville)
+        answer += 1
+        
+    return answer
+    
 # sol.2
 # 80.8(정확성), 0(효율성)
 from collections import deque
