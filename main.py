@@ -1,3 +1,4 @@
-from Others.fibonacci import solution
+from Others.control_strings import solution
 
-print(solution(5))
+print(solution('a234'))
+print(solution('1234'))
