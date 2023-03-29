@@ -1,3 +1,43 @@
+# 평균
+def final_exam_avg():
+    N=int(input())
+    score_list=[int(i) for i in input().split()]
+
+    max_score = max(score_list)
+    fixed_score_list = list(map(lambda x:x/max_score*100, score_list))
+    print(sum(fixed_score_list)/N)
+
+final_exam_avg()
+
+# 바구니 뒤집기
+def reverse_basket():
+    N,M=map(int,input().split())
+    R=list(range(1,N+1))
+    for _ in [0]*M:
+        i,j=map(int,input().split())
+        R[i-1:j] = reversed(R[i-1:j])
+    print(*R)
+
+
+# 나머지
+def different_mod():
+    R=[]
+    for _ in range(10):
+        i=int(input())
+        R.append(i%42)
+    print(len(list(set(R))))
+
+    
+# 과제 안 내신 분..?
+def check_report():
+    R=list(range(1,31))
+    for _ in range(28):
+        i=int(input())
+        R.remove(i)
+    print(R[0])
+    print(R[1])
+
+
 # 공 바꾸기
 def change_a_ball():
     N,M=map(int,input().split())
@@ -7,8 +47,7 @@ def change_a_ball():
         R[i-1],R[j-1]=R[j-1],R[i-1]
     print(*R)
 
-change_a_ball()
-
+    
 # 공 넣기
 def shortest_put_a_ball():
     p,_,*l=map(int,open(0).read().split())
