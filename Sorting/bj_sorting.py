@@ -1,3 +1,13 @@
+# 좌표 정렬하기
+def sort_coordinates():
+    n = int(input())
+    answer_list = []
+    for _ in range(n):
+        answer_list.append([int(i) for i in input().split()])
+    sorted_list = sorted(answer_list, key=lambda x: (x[0], x[1]))
+    for i in sorted_list:
+        print(*i)
+
 # sort() 는 Timsort 라는 정렬 알고리즘 사용.
 # Timsort 알고리즘은 O(n) 으로 되는 경우도 있긴 하지만(데이터가 정렬되어 있으면 비교를 하지 않음)
 # 평균적으로 nlogn, 최악인 경우에도 nlogn 을 보장
