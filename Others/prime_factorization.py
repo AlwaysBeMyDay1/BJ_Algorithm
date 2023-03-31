@@ -1,3 +1,12 @@
+# https://www.acmicpc.net/problem/11653
+# 소인수분해
+def prime_factorization():
+    N=int(input());a=2
+    while N>1:
+        if N%a:a+=1
+        else:print(a);N/=a
+
+
 # https://school.programmers.co.kr/learn/courses/30/lessons/120852
 # 소인수분해
 
