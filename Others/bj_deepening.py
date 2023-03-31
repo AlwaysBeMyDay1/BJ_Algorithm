@@ -1,3 +1,15 @@
+
+
+# 팰린드롬인지 확인하기
+# 팰린드롬(like 기러기):그리스어 'Palin' 의 '뒤 (Back)', 또는 '다시 (again)' 라는 뜻과 '방향 (direction)'을 뜻하는 'dromos' 어원을 두고 있음.
+def is_palindrome():
+    s=input()
+    # if s==s[::-1]:print(1)
+    # else:print(0)
+    print(+(s==s[::-1]))
+is_palindrome()
+
+
 # 킹, 퀸, 룩, 비숍, 나이트, 폰
 def chess():
     found_num_list = [int(i) for i in input().split(' ')]
@@ -36,4 +48,4 @@ def change_basket_order():
 
     print(' '.join(N_list).strip())
 
-change_basket_order()
+# change_basket_order()
