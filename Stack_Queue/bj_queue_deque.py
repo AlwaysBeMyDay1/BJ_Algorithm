@@ -1,3 +1,8 @@
+# 덱
+from collections import deque
+
+
+
 # 프린터 큐
 def print_priority():
     from collections import deque
