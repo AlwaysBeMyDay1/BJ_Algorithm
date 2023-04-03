@@ -1,3 +1,27 @@
+# 회전하는 큐
+def circulat_queue():
+    from collections import deque
+    
+    n,m,*O=map(int,open(0).read().split())
+    O=deque(O)
+    L=deque(range(1,n+1))
+    
+    i=0
+    while O:
+        o=O[0]
+        li=L.index(o)
+        ri=len(L)-li
+        mn=min(li,ri)
+        i+=mn
+        while L[0]!=o:
+            L.append(L.popleft())
+        L.popleft()
+        O.popleft()
+    
+    print(i)
+
+
+
 # 프린터 큐
 def print_priority():
     from collections import deque
