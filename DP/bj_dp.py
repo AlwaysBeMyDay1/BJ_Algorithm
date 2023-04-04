@@ -1,3 +1,12 @@
+# 연속합
+def continuous_sum():
+    n, *O = map(int, open(0).read().split())
+    d = [O[0]]
+    for o in O[1:]:
+        d.append(max(d[-1] + o, o))
+    print(max(d))
+
+
 # 파도반 수열
 def padoban():
     n, *O = map(int, open(0).read().split())
