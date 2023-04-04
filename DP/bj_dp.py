@@ -1,3 +1,17 @@
+# 정수 삼각형
+def int_triangle():
+    n = int(input())
+    O = []
+    for i in range(n):
+        O.append(list(map(int, input().split())))
+    for i in range(1, n):
+        for j in range(i + 1):
+            if j == 0: O[i][j] += O[i - 1][j]
+            elif j == i: O[i][j] += O[i - 1][j - 1]
+            else: O[i][j] += max(O[i - 1][j], O[i - 1][j - 1])
+    print(max(O[-1]))
+
+
 # RGB거리
 def street_of_rgb():
     n = int(input())
