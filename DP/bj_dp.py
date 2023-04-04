@@ -1,3 +1,74 @@
+# 계단 오르기
+def shortest_climbing_stairs():
+    import sys
+    a=b=c=0
+    n = int(sys.stdin.readline())
+    for i in range(n):
+        t=int(sys.stdin.readline())
+        a,b,c = c,a+t,max(a,b) + t
+    print(c)
+
+def climbing_stairs():
+    n=int(input()) # 계단 개수
+    s=[int(input()) for _ in range(n)] # 계단 리스트
+    dp=[0]*(n) # dp 리스트
+    if len(s)<=2: # 계단이 2개 이하일땐 그냥 다 더해서 출력
+        print(sum(s))
+    else: # 계단이 3개 이상일 때
+        dp[0]=s[0] # 첫째 계단 수동 계산
+        dp[1]=s[0]+s[1] # 둘째 계단까지 수동 계산
+        for i in range(2,n): # 3번째 계단 부터 dp 점화식 이용해서 최대값 구하기
+            dp[i]=max(dp[i-3]+s[i-1]+s[i], dp[i-2]+s[i])
+        print(dp[-1])
+    
+# goood ! but..
+# 3,[10,20,25] => 45가 나와야 하지만 35가 나옴
+def climbing_stairs_vers1():
+    n,*O=map(int,open(0).read().split())
+    dp=[O[0]]
+    for i in range(1,n):
+        if i%3==0:
+            dp.append(dp[-1]+O[i]+max(O[i-1],O[i-2]))
+    
+    if n<=2:
+        print(sum(O))
+    elif n==3:
+        print(max(O[0],O[1])+O[2])
+    else:
+        r=(n-1)%3
+        if r==0:
+            print(dp[-1])
+        else:
+            print(dp[-1]+O[-1])
+            
+# incorrect
+def climbing_stairs_vers2():
+    n,*O=map(int,open(0).read().split())
+    dp=[0]
+    for i in range(0,n):
+        if (i+1)%3==0:
+            dp.append(dp[-1]+O[i]+max(O[i-1],O[i-2]))
+    if n%3==0:
+        print(dp[-1])
+    else:
+        print(dp[-1]+O[-1])
+
+
+
+# 정수 삼각형
+def int_triangle():
+    n = int(input())
+    O = []
+    for i in range(n):
+        O.append(list(map(int, input().split())))
+    for i in range(1, n):
+        for j in range(i + 1):
+            if j == 0: O[i][j] += O[i - 1][j]
+            elif j == i: O[i][j] += O[i - 1][j - 1]
+            else: O[i][j] += max(O[i - 1][j], O[i - 1][j - 1])
+    print(max(O[-1]))
+
+
 # RGB거리
 def street_of_rgb():
     n = int(input())
