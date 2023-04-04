@@ -1,3 +1,14 @@
+# 파도반 수열
+def padoban():
+    n, *O = map(int, open(0).read().split())
+    N = max(O)
+    L = [0, 1, 1, 1, 2]
+    for i in range(4, N):
+        L.append(L[i] + L[i - 4])
+    for o in O:
+        print(L[o])
+
+
 # 01타일
 def tile():
     L = [0, 1, 2]
