@@ -1,3 +1,18 @@
+# RGB거리
+def street_of_rgb():
+    n = int(input())
+    O = []
+    for i in range(n):
+        O.append(list(map(int, input().split())))
+    for i in range(1, n):
+        print(O)
+        O[i][0] += min(O[i - 1][1], O[i - 1][2])
+        O[i][1] += min(O[i - 1][0], O[i - 1][2])
+        O[i][2] += min(O[i - 1][0], O[i - 1][2])
+        print(O)
+    print(min(O[-1][0], O[-1][1], O[-1][2]))
+
+
 # 연속합
 def continuous_sum():
     n, *O = map(int, open(0).read().split())
