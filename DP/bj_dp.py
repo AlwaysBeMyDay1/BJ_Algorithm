@@ -1,3 +1,16 @@
+# 가장 긴 증가하는 부분 수열
+def LIS():
+    n, *L = map(int, open(0).read().split())
+    dp = [1] * n
+
+    for i in range(1, n):
+        for j in range(i):
+            if L[i] > L[j]:
+                dp[i] = max(dp[i], dp[j] + 1)
+
+    print(max(dp))
+
+
 # 포도주 시식
 def drink_wine():
     n, *L = map(int, open(0).read().split())
