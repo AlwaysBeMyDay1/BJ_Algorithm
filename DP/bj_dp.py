@@ -1,3 +1,21 @@
+# 포도주 시식
+def drink_wine():
+    n, *L = map(int, open(0).read().split())
+    L.insert(0, 0)
+    dp = [0] * (n + 1)
+    if n == 1:
+        dp[1] = L[1]
+    else:
+        dp[1] = L[1]
+        dp[2] = L[1] + L[2]
+        for i in range(3, n + 1):
+            a = dp[i - 3] + L[i] + L[i - 1]
+            b = dp[i - 2] + L[i]
+            c = dp[i - 1]
+            dp[i] = max(a, b, c)
+    print(dp[-1])
+
+
 # 쉬운 계단 수
 def stair_num():
     n = int(input())
