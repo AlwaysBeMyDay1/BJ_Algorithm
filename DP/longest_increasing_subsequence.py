@@ -1,3 +1,29 @@
+# 전깃줄
+# 교차조건 : A[i] < A[j] and B[i] > B[j]
+def LIS_electric():
+    n, *L = map(int, open(0).read().split())
+    A = L[::2]
+    B = L[1::2]
+    dict = {}
+    for i in range(n):
+        for j in range(n):
+            if (A[i] < A[j] and B[i] > B[j]) or (A[i] > A[j] and B[i] < B[j]):
+                if dict.get(i):
+                    dict[i] += [j]
+                else:
+                    dict[i] = [j]
+    N = sorted(dict.items(), key=lambda x: len(x[1]), reverse=True)
+
+    a = 0
+    for d in N:
+        if d[1] != []:
+            a += 1
+        for o in d[1]:
+            dict[o].remove(d[0])
+
+    print(a)
+
+
 # 가장 긴 바이토닉 부분 수열
 def LIS_bitonic():
     n, *L = map(int, open(0).read().split())
