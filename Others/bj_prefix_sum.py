@@ -1,3 +1,41 @@
+# 인간-컴퓨터 상호작용
+def hnc_interaction_vers2():
+    S, _, *qs = open(0)
+    dp = [[0] * 26]
+    for s in S[:-1]:
+        dp.append(dp[-1][:])
+        dp[-1][ord(s) - 97] += 1
+    for q in qs:
+        c, a, b = q.split()
+        a, b = int(a), int(b)
+        c = ord(c)
+        print(dp[b + 1][c - 97] - dp[a][c - 97])
+
+
+# task 2 time exceed?
+def hnc_interaction_vers1():
+    import sys
+    input = sys.stdin.readline
+
+    str = input().rstrip()
+    q = int(input())
+    dict = {}
+    for idx, s in enumerate(str):
+        if dict.get(s):
+            dict[s].append(idx)
+        else:
+            dict[s] = [idx]
+
+    for i in range(q):
+        a, start, end = input().split()
+        start = int(start)
+        end = int(end)
+        if dict.get(a):
+            print(sum(start <= j <= end for j in dict[a]))
+        else:
+            print(0)
+
+
 # 수열
 def matrix():
     n, k, *l = map(int, open(0).read().split())
