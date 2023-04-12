@@ -1,3 +1,39 @@
+# 나머지 합
+def sum_of_mod():
+    n, m, *l = map(int, open(0).read().split())
+    a = 0
+    dp = [0] * m
+    for i in range(n):
+        a += l[i]
+        dp[a % m] += 1
+    result = dp[0]
+    for i in dp:
+        result += i * (i - 1) // 2
+    print(result)
+
+
+# memory exceed
+def sum_of_mod_vers2():
+    n, m, *l = map(int, open(0).read().split())
+    dp = []
+    for idx, i in enumerate(l):
+        dp.append(i)
+        for j in range(1, idx + 1):
+            dp.append(dp[-1] + l[idx - j])
+
+    print(sum(r % m == 0 for r in dp))
+
+
+# time exceed
+def sum_of_mod_vers1():
+    n, m, *l = map(int, open(0).read().split())
+    dp = []
+    for idx, i in enumerate(l):
+        for j in range(idx + 1):
+            dp.append(sum(l[j:idx + 1]))
+    print(sum(r % m == 0 for r in dp))
+
+
 # 인간-컴퓨터 상호작용
 def hnc_interaction_vers2():
     S, _, *qs = open(0)
