@@ -1,3 +1,92 @@
+# 구간합 구하기 5
+def prefix_sum5():
+    import sys
+    input = sys.stdin.readline
+    n,m=map(int,input().split())
+    arr=[]
+    for i in range(n):
+        a=list(map(int,input().split()))
+        arr.append(a)
+    dp=[[0]*(n+1) for i in range(n+1)]
+    for i in range(1,n+1):
+        for j in range(1,n+1):
+            dp[i][j]=dp[i][j-1]+dp[i-1][j]-dp[i-1][j-1]+arr[i-1][j-1]
+    
+    for k in range(m):
+        x1,y1,x2,y2=map(int,input().split())
+        result=dp[x2][y2]-dp[x2][y1-1]-dp[x1-1][y2]+dp[x1-1][y1-1]
+        print(result)
+
+def failed_prefix_sum5():
+    import sys
+    input = sys.stdin.readline
+    
+    n, m = map(int, input().split())
+    
+    arr = []
+    for i in range(n):
+        a = list(map(int, input().split()))
+        arr.append(a)
+    
+    dp=[]
+    for i in range(n):
+        k=0
+        dp_e=[]
+        for j in range(n):
+            k+=arr[i][j]
+            dp_e.append(k)
+        dp.append(dp_e)
+    
+    print(dp)
+    for k in range(m):
+        x1,y1,x2,y2 = map(int,input().split())
+    
+        result=0
+        for x in range(x1-1,x2):
+            result+=(dp[x][y2-1]-dp[x][y1-2])
+            print(result)
+        print(result)
+        
+        
+# for k in range(m):
+#     x1,y1,x2,y2 = map(int,input().split())
+
+# 나머지 합
+def sum_of_mod():
+    n, m, *l = map(int, open(0).read().split())
+    a = 0
+    dp = [0] * m
+    for i in range(n):
+        a += l[i]
+        dp[a % m] += 1
+    result = dp[0]
+    for i in dp:
+        result += i * (i - 1) // 2
+    print(result)
+
+
+# memory exceed
+def sum_of_mod_vers2():
+    n, m, *l = map(int, open(0).read().split())
+    dp = []
+    for idx, i in enumerate(l):
+        dp.append(i)
+        for j in range(1, idx + 1):
+            dp.append(dp[-1] + l[idx - j])
+
+    print(sum(r % m == 0 for r in dp))
+
+
+# time exceed
+def sum_of_mod_vers1():
+    n, m, *l = map(int, open(0).read().split())
+    dp = []
+    for idx, i in enumerate(l):
+        for j in range(idx + 1):
+            dp.append(sum(l[j:idx + 1]))
+    print(sum(r % m == 0 for r in dp))
+
+
 # 인간-컴퓨터 상호작용
 def hnc_interaction_vers2():
     S, _, *qs = open(0)
