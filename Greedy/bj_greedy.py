@@ -1,3 +1,15 @@
+# ATM
+def atm():
+    n, *l = map(int, open(0).read().split())
+    l.sort()
+    a = 0
+    c = 0
+    for i in range(n):
+        c += l[i]
+        a += c
+    print(a)
+
+
 # 회의실 배정
 def allot_room():
     import sys
