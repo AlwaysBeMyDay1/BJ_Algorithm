@@ -1,3 +1,15 @@
+# ATM
+def atm():
+    n, *l = map(int, open(0).read().split())
+    l.sort()
+    a = 0
+    c = 0
+    for i in range(n):
+        c += l[i]
+        a += c
+    print(a)
+
+
 # 회의실 배정
 def allot_room():
     import sys
@@ -30,4 +42,8 @@ def div_coin():
         count += k // l[i]  #카운트 값에 K를 동전으로 나눈 몫을 더해줌
         k = k % l[i]  # K는 동전으로 나눈 나머지로 계속 반복
 
+<<<<<<< HEAD
     print(count)
+=======
+    print(count)
+>>>>>>> e41b28520924ab8fa9b9888fccc928493ebb6082
