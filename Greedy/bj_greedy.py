@@ -1,3 +1,18 @@
+# 잃어버린 괄호
+def lost_bracket():
+    eq = input().split('-')
+    r = 0
+    for i in range(len(eq)):
+        mr = 0
+        for s in eq[i].split('+'):
+            mr += int(s.lstrip('0'))
+        if i == 0:
+            r += mr
+        else:
+            r -= mr
+    print(r)
+
+
 # ATM
 def atm():
     n, *l = map(int, open(0).read().split())
@@ -42,8 +57,4 @@ def div_coin():
         count += k // l[i]  #카운트 값에 K를 동전으로 나눈 몫을 더해줌
         k = k % l[i]  # K는 동전으로 나눈 나머지로 계속 반복
 
-<<<<<<< HEAD
     print(count)
-=======
-    print(count)
->>>>>>> e41b28520924ab8fa9b9888fccc928493ebb6082
