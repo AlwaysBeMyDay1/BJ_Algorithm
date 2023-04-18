@@ -1,3 +1,18 @@
+# 잃어버린 괄호
+def lost_bracket():
+    eq = input().split('-')
+    r = 0
+    for i in range(len(eq)):
+        mr = 0
+        for s in eq[i].split('+'):
+            mr += int(s.lstrip('0'))
+        if i == 0:
+            r += mr
+        else:
+            r -= mr
+    print(r)
+
+
 # ATM
 def atm():
     n, *l = map(int, open(0).read().split())
