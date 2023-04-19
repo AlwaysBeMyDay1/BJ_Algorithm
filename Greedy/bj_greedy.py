@@ -1,3 +1,23 @@
+# 주유소
+def gas_station():
+    import sys
+    ip = sys.stdin.readline
+
+    N = int(ip())
+    roads = list(map(int, ip().split()))
+    costs = list(map(int, ip().split()))
+
+    min = costs[0]
+    result = min * roads[0]
+    for i in range(1, N - 1):
+        cost = costs[i]
+        if cost <= min:
+            min = cost
+        result += roads[i] * min
+
+    print(result)
+
+
 # 잃어버린 괄호
 def lost_bracket():
     eq = input().split('-')
@@ -5,7 +25,7 @@ def lost_bracket():
     for i in range(len(eq)):
         mr = 0
         for s in eq[i].split('+'):
-            mr += int(s.lstrip('0'))
+            mr += int(s)
         if i == 0:
             r += mr
         else:
