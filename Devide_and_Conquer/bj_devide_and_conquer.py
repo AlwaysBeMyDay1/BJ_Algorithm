@@ -1,19 +1,30 @@
 # 곱셈
-def multiple_dnc():
-    import sys
-    a, b, c = map(int, sys.stdin.readline().split())
-
-    def multi(a, n):
-        if n == 1:
-            return a % c
+def multiple_dnc_vers2():
+    a,b,c=map(int,input().split())
+    
+    def dnc(a,b,c):
+        if b==1:
+            return a%c
+        elif b%2==0:
+            return (dnc(a,b//2,c)**2)%c
         else:
-            tmp = multi(a, n // 2)
-            if n % 2 == 0:
-                return (tmp * tmp) % c
-            else:
-                return (tmp * tmp * a) % c
+            return ((dnc(a,b//2,c)**2)*a)%c
+            
+    print(dnc(a,b,c))
 
-    print(multi(a, b))
+
+# RecursionError
+def multiple_dnc_vers1():
+    a,b,c=map(int,input().split())
+    
+    def rcrs(a,aa,time,div):
+        if time==0:
+            print(aa)
+            return
+        rcrs(a,a*aa%div,time-1,div)
+        
+    rcrs(a,1,b,c)
+
 
 
 # 종이의 개수
